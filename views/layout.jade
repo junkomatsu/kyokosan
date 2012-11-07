@@ -1,0 +1,17 @@
+doctype 5
+html
+  head
+    meta(charset='UTF-8')
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+    script(src='/socket.io/socket.io.js')
+    script
+      var socket = io.connect('http://localhost:3000');
+      socket.on('message', function(t){
+        $('<div></div>')
+          .html('<li>' + t.text + '</li>')
+          .prependTo('#tweets');
+      });
+  body
+    block content

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  hr
+  form(id='frm', name='frm', method='GET', action='/')
+    p filter by keyword:
+    input(type='text', id='keyword', name='keyword', value=keyword)
+    input(type='submit', value='speach!')
+  hr
+  ul
+    #tweets

@@ -1,0 +1,19 @@
+var SpeachProcessor = require('../lib/SpeachProcessor.js');
+
+describe('SpeachProcessor', function() {
+  var processor = new SpeachProcessor();
+  var speach = false;
+  var tweet;
+
+  it('call enqueue', function() {
+    processor.enqueue({'text':'こんにちは'});
+  });
+
+  processor.on('speach', function(data) {
+    speach = true;
+    tweet = data;
+    expect(tweet.lang).toEqual('ja');
+  });
+
+  waitsFor(function() { return !!speach; }, 'on speach emitted', 5000);
+});
